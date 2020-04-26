@@ -36,11 +36,28 @@
         Eos aut veniam magni dignissimos non adipisci sequi 
         perspiciatis, eius nostrum commodi!</p>
     </main>
+
+    <footer>
+      <!-- Form -->
+
+      <div class="comments" v-if="true">
+        <app-comment
+          v-for="comment in 4"
+          :key="comment"
+          :comment="comment"
+        />
+      </div>
+      <div class="text-center" v-else>Коментариев нет!</div>
+    </footer>
   </article>
 </template>
 
 <script>
+import AppComment from '@/components/main/Comment.vue'
   export default {
+    components: {
+      AppComment
+    },
     validate({ params }) {
       return Boolean(params.id)
     }
