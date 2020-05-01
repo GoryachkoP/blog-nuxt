@@ -61,7 +61,25 @@ export default {
   },
   methods: {
     onSubmit() {
-      console.log(submit)
+      this.$refs.form.validate(async valid => {
+        if(valid) {
+          this.loading = true
+
+          // post querry
+
+          try {
+            const formData = {
+              login: this.controls.login,
+              password: this.controls.password
+            }
+            // next we do dispatch
+            await this.$store.dispatch('auth/login', formData)
+            this.$router.push('/admin')
+          } catch (e) {
+            this.loading = false
+          }
+        }
+      })
     }
   }
 }
