@@ -1,12 +1,11 @@
 <template>
   <el-card class="form-container">
-    <el-form 
-      :model="controls" 
-      :rules="rules" 
+    <el-form
+      :model="controls"
+      :rules="rules"
       ref="form"
       @submit.native.prevent="onSubmit"
     >
-
       <h1>Добавить коментарий</h1>
 
       <el-form-item label="Ваше имя" prop="name">
