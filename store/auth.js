@@ -1,7 +1,7 @@
 // token we got from server
 import async from './../.nuxt/server';
 export const state = () => ({
-  token: null
+  token: true
 })
 
 export const mutations = {
@@ -26,11 +26,21 @@ export const actions = {
         throw e
     }
   },
+
   setToken({ commit }, token) {
     commit('setToken', token)
   },
+
   logout({ commit }) {
     commit('clearToken')
+  },
+
+  createUser({commit}, formData) {
+    try {
+      console.log('create user', formData)
+    } catch (e) {
+      
+    }
   }
 }
 
