@@ -7,7 +7,13 @@
 <script>
 export default {
   layout: 'admin',
-  middleware: ['admin-auth']
+  middleware: ['admin-auth'],
+  mounted() {
+    const { message } = this.$route.query
+    if ( message === 'successLogin' ) {
+      this.$message.success('Вы успешно вошли в систему!')
+    }
+  }
 }
 </script>
 

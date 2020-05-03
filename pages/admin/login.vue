@@ -40,7 +40,7 @@
 
 <script>
 export default {
-  layout: 'empty',
+  layout: 'emptyLayout',
   data() {
     return {
       loading: false,
@@ -62,10 +62,14 @@ export default {
   mounted() {
     // mounted method. called when DOM is ready for work
     const {message} = this.$route.query
-    console.log(this.$route)
-    console.log(this)
-    if (message === 'login') {
-      this.$message.info('Для начала войдите в систему')
+
+    switch (message) {
+      case 'login':
+        this.$message.info('Для начала войдите в систему')
+        break;
+      case 'logout':
+        this.$message.success('Вы успешно вышли из системы')
+        break;
     }
   },
   methods: {
@@ -83,7 +87,7 @@ export default {
             }
             // next we do dispatch
             await this.$store.dispatch('auth/login', formData)
-            this.$router.push('/admin')
+            this.$router.push('/admin?message=successLogin')
           } catch (e) {
             this.loading = false
           }
