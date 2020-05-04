@@ -18,7 +18,10 @@ export const actions = {
             _id: Math.random()
           }
         ])
-      })
+      }, 1500)
     })
+  },
+  async remove({}, id) {
+    
   }
 }
