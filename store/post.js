@@ -23,7 +23,21 @@ export const actions = {
       }, 1500)
     })
   },
-  async create({}, {title, text}) {
+  async create({commit}, {title, text, image}) {
+    try {
+      //FormData is included in JS, its API browser, such we can use
+      const fd = new FormData()
+
+      fd.append('title', title)
+      fd.append('text', text)
+      fd.append('image', image, image.name )
+      
+
+    } catch (e) {
+      commit('setError', e, {root: true})
+      throw e
+    }
+
     return await new Promise(resolve => {
       setTimeout(() => {
         resolve()
