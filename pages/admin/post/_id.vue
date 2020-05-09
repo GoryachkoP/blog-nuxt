@@ -61,6 +61,8 @@ export default {
   validate({params}) {
     return !!params.id
   },
+  // asyncData processed on server side
+  // them asyncData merge with data
   async asyncData({store, params}) {
     const post = await store.dispatch('post/fetchAdminById', params.id)
     return {post}
